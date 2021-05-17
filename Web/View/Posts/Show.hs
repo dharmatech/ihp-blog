@@ -12,5 +12,6 @@ instance View ShowView where
             </ol>
         </nav>
         <h1>Show Post</h1>
-        <p>{post}</p>
+        <h1> {get #title post}</h1>
+        <div>{get #body  post}</div>
     |]
