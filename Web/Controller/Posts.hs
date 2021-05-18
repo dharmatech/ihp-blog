@@ -6,6 +6,8 @@ import Web.View.Posts.New
 import Web.View.Posts.Edit
 import Web.View.Posts.Show
 
+import qualified Text.MMark as MMark
+
 instance Controller PostsController where
     action PostsAction = do
         posts <- query @Post
@@ -56,3 +58,11 @@ instance Controller PostsController where
 buildPost post = post
     |> fill @["title","body"]
     |> validateField #title nonEmpty
+    |> validateField #body nonEmpty
+    |> validateField #body isMarkdown
+
+isMarkdown :: Text -> ValidatorResult
+isMarkdown text =
+    case MMark.parse "" text of
+        Left _ -> Failure "Please provide valid Markdown"
+        Right _ -> Success
