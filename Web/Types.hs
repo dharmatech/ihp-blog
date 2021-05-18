@@ -21,10 +21,10 @@ data PostsController
 
 data CommentsController
     = CommentsAction
-    | NewCommentAction
-    | ShowCommentAction { commentId :: !(Id Comment) }
+    | NewCommentAction    { postId    :: !(Id Post)    }
+    | ShowCommentAction   { commentId :: !(Id Comment) }
     | CreateCommentAction
-    | EditCommentAction { commentId :: !(Id Comment) }
+    | EditCommentAction   { commentId :: !(Id Comment) }
     | UpdateCommentAction { commentId :: !(Id Comment) }
     | DeleteCommentAction { commentId :: !(Id Comment) }
     deriving (Eq, Show, Data)

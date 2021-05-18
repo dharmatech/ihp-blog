@@ -43,3 +43,13 @@ INSERT INTO public.posts (id, title, body, created_at) VALUES ('9007ddce-eac0-44
 ALTER TABLE public.posts ENABLE TRIGGER ALL;
 
 
+ALTER TABLE public.comments DISABLE TRIGGER ALL;
+
+INSERT INTO public.comments (id, post_id, author, body) VALUES ('0f671934-0971-402e-ab70-f17e91b56a82', '98d20954-4609-4f20-acda-ac6f2ac6d953', 'Guy Steele', 'Scheme programming language');
+INSERT INTO public.comments (id, post_id, author, body) VALUES ('c87854c7-081b-4a99-8ca7-fdb0c9b411a2', '98d20954-4609-4f20-acda-ac6f2ac6d953', 'Linus', 'Micro Emacs');
+INSERT INTO public.comments (id, post_id, author, body) VALUES ('6881bc98-a4e4-43ce-8d6e-4c76252ce4bf', '98d20954-4609-4f20-acda-ac6f2ac6d953', 'David Moon', 'Symbolics');
+
+
+ALTER TABLE public.comments ENABLE TRIGGER ALL;
+
+
