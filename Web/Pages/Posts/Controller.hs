@@ -2,23 +2,21 @@
 module Web.Pages.Posts.Controller where
 
 import Web.Controller.Prelude
-import Web.Pages.Posts.Index
-import Web.Pages.Posts.New
+
+-- import Web.Pages.Posts.New.View
 import Web.Pages.Posts.Edit
 import Web.Pages.Posts.Show
+
+import Web.Pages.Posts.Index.Actions
+import Web.Pages.Posts.New.Actions
 
 import qualified Text.MMark as MMark
 
 instance Controller PostsController where
-    action PostsAction = do
-        posts <- Web.Controller.Prelude.query @Post
-            |> orderByDesc #createdAt
-            |> Web.Controller.Prelude.fetch
-        render IndexView { .. }
 
-    action NewPostAction = do
-        let post = newRecord
-        render NewView { .. }
+    action PostsAction = actionPostsAction 
+
+    action NewPostAction = actionNewPostAction
 
     action ShowPostAction { postId } = do
         post <- fetch postId
@@ -41,16 +39,7 @@ instance Controller PostsController where
                     setSuccessMessage "Post updated"
                     redirectTo EditPostAction { .. }
 
-    action CreatePostAction = do
-        let post = newRecord @Post
-        post
-            |> buildPost
-            |> ifValid \case
-                Left post -> render NewView { .. } 
-                Right post -> do
-                    post <- post |> createRecord
-                    setSuccessMessage "Post created"
-                    redirectTo PostsAction
+    action CreatePostAction = actionCreatePostAction
 
     action DeletePostAction { postId } = do
         post <- fetch postId
@@ -58,14 +47,14 @@ instance Controller PostsController where
         setSuccessMessage "Post deleted"
         redirectTo PostsAction
 
-buildPost post = post
-    |> fill @["title","body"]
-    |> validateField #title nonEmpty
-    |> validateField #body nonEmpty
-    |> validateField #body isMarkdown
+-- buildPost post = post
+--     |> fill @["title","body"]
+--     |> validateField #title nonEmpty
+--     |> validateField #body nonEmpty
+--     |> validateField #body isMarkdown
 
-isMarkdown :: Text -> ValidatorResult
-isMarkdown text =
-    case MMark.parse "" text of
-        Left _ -> Failure "Please provide valid Markdown"
-        Right _ -> Success
+-- isMarkdown :: Text -> ValidatorResult
+-- isMarkdown text =
+--     case MMark.parse "" text of
+--         Left _ -> Failure "Please provide valid Markdown"
+--         Right _ -> Success

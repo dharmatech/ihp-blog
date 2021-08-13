@@ -1,4 +1,4 @@
-module Web.Pages.Posts.New where
+module Web.Pages.Posts.New.View where
 import Web.View.Prelude
 
 data NewView = NewView { post :: Post }
