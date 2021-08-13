@@ -1,4 +1,4 @@
-module Web.View.Posts.Index where
+module Web.Pages.Posts.Index where
 import Web.View.Prelude
 
 data IndexView = IndexView { posts :: [Post] }

@@ -1,17 +1,17 @@
-module Web.View.Posts.New where
+module Web.Pages.Posts.Edit where
 import Web.View.Prelude
 
-data NewView = NewView { post :: Post }
+data EditView = EditView { post :: Post }
 
-instance View NewView where
-    html NewView { .. } = [hsx|
+instance View EditView where
+    html EditView { .. } = [hsx|
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href={PostsAction}>Posts</a></li>
-                <li class="breadcrumb-item active">New Post</li>
+                <li class="breadcrumb-item active">Edit Post</li>
             </ol>
         </nav>
-        <h1>New Post</h1>
+        <h1>Edit Post</h1>
         {renderForm post}
     |]
 

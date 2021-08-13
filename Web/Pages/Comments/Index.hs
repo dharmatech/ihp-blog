@@ -1,4 +1,4 @@
-module Web.View.Comments.Index where
+module Web.Pages.Comments.Index where
 import Web.View.Prelude
 
 data IndexView = IndexView { comments :: [Comment] }

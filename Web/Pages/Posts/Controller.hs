@@ -1,18 +1,19 @@
-module Web.Controller.Posts where
+-- {-# LANGUAGE NoMonomorphismRestriction #-}
+module Web.Pages.Posts.Controller where
 
 import Web.Controller.Prelude
-import Web.View.Posts.Index
-import Web.View.Posts.New
-import Web.View.Posts.Edit
-import Web.View.Posts.Show
+import Web.Pages.Posts.Index
+import Web.Pages.Posts.New
+import Web.Pages.Posts.Edit
+import Web.Pages.Posts.Show
 
 import qualified Text.MMark as MMark
 
 instance Controller PostsController where
     action PostsAction = do
-        posts <- query @Post
+        posts <- Web.Controller.Prelude.query @Post
             |> orderByDesc #createdAt
-            |> fetch
+            |> Web.Controller.Prelude.fetch
         render IndexView { .. }
 
     action NewPostAction = do

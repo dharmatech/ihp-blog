@@ -1,10 +1,10 @@
-module Web.Controller.Comments where
+module Web.Pages.Comments.Controller where
 
 import Web.Controller.Prelude
-import Web.View.Comments.Index
-import Web.View.Comments.New
-import Web.View.Comments.Edit
-import Web.View.Comments.Show
+import Web.Pages.Comments.Index
+import Web.Pages.Comments.New
+import Web.Pages.Comments.Edit
+import Web.Pages.Comments.Show
 
 instance Controller CommentsController where
     action CommentsAction = do

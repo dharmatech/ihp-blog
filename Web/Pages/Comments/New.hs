@@ -1,4 +1,4 @@
-module Web.View.Comments.New where
+module Web.Pages.Comments.New where
 import Web.View.Prelude
 
 data NewView = NewView { comment :: Comment, post :: Post }

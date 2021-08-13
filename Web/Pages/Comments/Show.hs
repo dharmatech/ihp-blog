@@ -1,4 +1,4 @@
-module Web.View.Comments.Show where
+module Web.Pages.Comments.Show where
 import Web.View.Prelude
 
 data ShowView = ShowView { comment :: Comment }

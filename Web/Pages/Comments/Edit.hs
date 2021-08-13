@@ -1,4 +1,4 @@
-module Web.View.Comments.Edit where
+module Web.Pages.Comments.Edit where
 import Web.View.Prelude
 
 data EditView = EditView { comment :: Comment }
