@@ -1,4 +1,4 @@
-module Web.Pages.Posts.Edit where
+module Web.Pages.Posts.Edit.View where
 import Web.View.Prelude
 
 data EditView = EditView { post :: Post }

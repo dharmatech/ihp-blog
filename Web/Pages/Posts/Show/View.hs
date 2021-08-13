@@ -1,4 +1,4 @@
-module Web.Pages.Posts.Show where
+module Web.Pages.Posts.Show.View where
 import Web.View.Prelude
 
 import qualified Text.MMark as MMark
